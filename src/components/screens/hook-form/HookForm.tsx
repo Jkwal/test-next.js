@@ -5,6 +5,7 @@ import {Controller, SubmitHandler, useForm} from "react-hook-form";
 import styles from './HookForm.module.scss';
 
 import Layout from "@/components/layout/Layout";
+import ShippingForm from "@/components/screens/hook-form/ShippingForm";
 import {IOption, IShippingFields} from "@/interfaces/hookForm.interface";
 
 
@@ -45,10 +46,10 @@ const HookForm: FC = () => {
     setValue,
     control,
   } = useForm<IShippingFields>({
-    defaultValues: {
-      name: 'Test',
-      email: 'test@test.com',
-    },
+    // defaultValues: {
+    //   name: 'Test',
+    //   email: 'test@test.com',
+    // },
     mode: 'onChange',
   })
 
@@ -67,82 +68,86 @@ const HookForm: FC = () => {
 
   return (
     <Layout title='Hook Form' description='test react hook form'>
+      <section className={styles.section}>
 
-      <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+        <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
 
-        <h3>Form 1</h3>
+          <h3>Form 1</h3>
 
-        <input
+          <input
+            {
+              ...register('name',
+                {
+                  required: 'Name is require field!',
+                })
+            }
+            placeholder="Name"
+          />
           {
-            ...register('name',
-              {
-                required: 'Name is require field!',
-              })
+            errors.name
+            && <div style={{color: 'red'}}>{errors.name.message}</div>
           }
-          placeholder="Name"
-        />
-        {
-          errors.name
-          && <div style={{color: 'red'}}>{errors.name.message}</div>
-        }
 
-        <input
+          <input
+            {
+              ...register('email',
+                {
+                  required: 'Email is require field!',
+                  pattern: {
+                    value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+                    message: 'Please enter valid email!'
+                  }
+                })
+            }
+            placeholder="Email"
+          />
           {
-            ...register('email',
-              {
-                required: 'Email is require field!',
-                pattern: {
-                  value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                  message: 'Please enter valid email!'
+            errors.email
+            && <div style={{color: 'red'}}>{errors.email.message}</div>
+          }
+
+          <Controller
+            control={control}
+            name='address.country'
+            rules={{
+              required: 'Country is required!'
+            }}
+            render={({field: {onChange, value}, fieldState: {error}}) =>
+              <div>
+                <ReactSelect
+                  placeholder='Countries'
+                  options={options}
+                  value={getValue(value)}
+                  onChange={(newValue) => onChange((newValue as IOption).value)}
+                />
+                {
+                  error
+                  && <div style={{color: 'red'}}>{error.message}</div>
                 }
-              })
-          }
-          placeholder="Email"
-        />
-        {
-          errors.email
-          && <div style={{color: 'red'}}>{errors.email.message}</div>
-        }
+              </div>
+            }
+          />
 
-        <Controller
-          control={control}
-          name='address.country'
-          rules={{
-            required: 'Country is required!'
-          }}
-          render={({field: {onChange, value}, fieldState: {error}}) =>
-            <div>
-              <ReactSelect
-                placeholder='Countries'
-                options={options}
-                value={getValue(value)}
-                onChange={(newValue) => onChange((newValue as IOption).value)}
-              />
-              {
-                error
-                && <div style={{color: 'red'}}>{error.message}</div>
-              }
-            </div>
-          }
-        />
 
+          <div>
+            <button className={styles.buttonSend}>Send</button>
+          </div>
+
+        </form>
+
+        <ShippingForm/>
 
         <div>
-          <button className={styles.buttonSend}>Send</button>
+          <button onClick={() => {
+            setValue('name', 'Jkwal')
+            setValue('email', 'TEST@TEST.RU')
+          }}
+          >
+            Fill data
+          </button>
         </div>
 
-      </form>
-
-      <div>
-        <button onClick={() => {
-          setValue('name', 'Jkwal')
-          setValue('email', 'test@test.ru')
-        }}
-        >
-          Fill data
-        </button>
-      </div>
-
+      </section>
     </Layout>
   )
 }
