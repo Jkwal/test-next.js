@@ -1,8 +1,8 @@
 import {GetStaticProps, NextPage} from "next";
 
-import {ICarData} from "@/interfaces/car.interface";
-import Home from "@/components/screens/home/Home";
 import {CarService} from "@/services/car.service";
+import Home from "@/components/screens/home/Home";
+import {ICarData} from "@/interfaces/car.interface";
 
 const HomePage: NextPage<ICarData> = ({cars}) => {
   return (

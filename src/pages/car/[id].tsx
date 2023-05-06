@@ -5,11 +5,13 @@ import {CarService} from "@/services/car.service";
 import {ICarDataSingle} from "@/interfaces/car.interface";
 import CarDetail from "@/components/screens/car-detail/CarDetail";
 
+
 const CarDetailPage: NextPage<ICarDataSingle> = ({car}) => {
   return (
     <CarDetail car={car}/>
   )
 }
+
 
 interface Params extends ParsedUrlQuery {
   id: string
@@ -34,7 +36,7 @@ export const getStaticProps: GetStaticProps<ICarDataSingle> =
 
   async ({params,}) => {
 
-    const car = await CarService.getById(String(params.id));
+    const car = await CarService.getById(String(params?.id));
 
     return {
       props: {car},

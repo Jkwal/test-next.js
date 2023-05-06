@@ -1,0 +1,20 @@
+.form {
+  width: 300px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border: 1px white solid;
+
+  > input {
+    min-height: 50px;
+  }
+
+}
+
+.buttonSend {
+  width: 100px;
+  min-height: 30px;
+}

@@ -1,7 +1,7 @@
 import {FC} from "react";
 
 import Layout from "@/components/layout/Layout";
-import CarItem from "@/components/UI/car/CarItem";
+import CarItem from "@/components/ui/car/CarItem";
 import {ICarDataSingle} from "@/interfaces/car.interface";
 
 

@@ -1,0 +1,29 @@
+.item {
+  width: 300px;
+
+  display: flex;
+  flex-direction: column;
+
+  border: white 1px solid;
+  border-radius: 5px;
+
+  overflow: hidden;
+
+  > h2 {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  > small {
+    font-size: 16px;
+  }
+
+  > a {
+
+    transition: color .4s ease-in-out;
+
+    &:hover{
+      color: aquamarine;
+    }
+  }
+}
