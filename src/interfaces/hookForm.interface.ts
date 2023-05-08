@@ -1,17 +1,22 @@
 export interface IAddress {
-  country: string,
-  city: string,
-  street: string,
-  house: string,
+   country: string,
+   city: string,
+   street: string,
+   house: string,
 }
 
 export interface IShippingFields {
-  email: string,
-  name: string,
-  address: IAddress
+   email: string,
+   name: string,
+   address: IAddress
 }
 
 export interface IOption {
-  value: string,
-  label: string,
+   value: string,
+   label: string,
+}
+
+export interface IThirdForm {
+   firstName: string,
+   lastName: string,
 }

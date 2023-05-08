@@ -18,8 +18,12 @@
   > input {
     min-height: 50px;
   }
-}
 
+  > label input {
+    width: 100%;
+    min-height: 50px;
+  }
+}
 
 .buttonSend {
   width: 100px;
@@ -33,4 +37,15 @@
   background-color: cornflowerblue;
 
   cursor: pointer;
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+}
+
+.error {
+  font-size: 15px;
+  color: red;
 }
