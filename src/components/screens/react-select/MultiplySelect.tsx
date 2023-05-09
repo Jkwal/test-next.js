@@ -1,7 +1,6 @@
 import {FC, useState} from "react";
 import ReactSelect, {OnChangeValue} from "react-select";
-
-import styles from './ReactSelect.module.scss'
+import makeAnimated from 'react-select/animated';
 
 import {IOption} from "@/components/screens/react-select/react-select.interface";
 
@@ -19,6 +18,8 @@ const options: IOption[] = [{
    value: 'japan',
    label: 'Japan'
 }]
+
+const animatedComponents = makeAnimated();
 
 const isMulti = true;
 
@@ -61,6 +62,7 @@ const MultiplySelect: FC = () => {
             isMulti={isMulti}
             isSearchable={false}
             placeholder='Chose countries'
+            components={animatedComponents}
          />
       </div>
    )

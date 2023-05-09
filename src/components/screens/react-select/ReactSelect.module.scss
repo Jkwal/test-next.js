@@ -1,3 +1,18 @@
+@keyframes scaleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
 .custom-select {
   &__control {
     background-color: transparent !important;
@@ -58,6 +73,8 @@
   &__menu {
     background-color: #292a2e !important;
     color: rgba(white, 0.6) !important;
+    animation: scaleIn .35s ease-in-out;
+
   }
 
   &__option {
