@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap');
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   box-sizing: border-box;
 
@@ -18,5 +22,7 @@ body {
   font-family: 'Titillium Web', sans-serif;
   color: white;
 
-  background-color: #09131b;
+  @apply bg-zinc-900
 }
+
+@import "src/components/screens/react-select/ReactSelect.module";
